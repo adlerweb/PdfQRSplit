@@ -1,4 +1,4 @@
-**# PdfQRSplit
+# PdfQRSplit
 
 *PdfQRSplit* is a small utility to split a multi-page PDF document intro separate PDF files based on pages containing a specified barcode. This concept is known as "separator page" and used in combination with high volume document scanners to scan a large number of unrelated documents in bulk.
 
@@ -60,4 +60,3 @@ Split 1 given files into 19 files
 ## Thanks
 
 This script is based on ["pdf_split_tool" by staticdev](https://github.com/staticdev/pdf-split-tool/).
-**
