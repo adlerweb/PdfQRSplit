@@ -1,17 +1,13 @@
 import argparse
-
 import glob
 import sys
 import io
+import PyPDF4
+import zxing
+
 from typing import List
 from tempfile import TemporaryDirectory
-
-import tempfile
-import PyPDF4
-
 from PIL import Image
-
-import zxing
 
 parser = argparse.ArgumentParser(description='Split PDF-file into separate files based on a separator barcode')
 parser.add_argument('filename', metavar='inputfile', type=str,
