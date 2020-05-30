@@ -59,4 +59,4 @@ Split 1 given files into 19 files
 
 ## Thanks
 
-This script is based on ["pdf_split_tool" by staticdev](https://github.com/staticdev/pdf-split-tool/).
+This script is based on ["pdf_split_tool" by Thiago Carvalho D'Ávila (staticdev)](https://github.com/staticdev/pdf-split-tool/).
