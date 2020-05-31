@@ -14,7 +14,7 @@ pip install zxing pypdf4 pillow
 
 ## Usage
 ```
-usage: PdfQTSplit.py [-h] [-p PREFIX] [-s SEPARATOR] [-k] [--keep-page-next] [-b BRIGHTNESS] [-v] [-d] inputfile
+usage: PdfQRSplit.py [-h] [-p PREFIX] [-s SEPARATOR] [-k] [--keep-page-next] [-b BRIGHTNESS] [-v] [-d] inputfile
 
 Split PDF-file into separate files based on a separator barcode
 
