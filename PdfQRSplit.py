@@ -44,7 +44,7 @@ class PdfQrSplit:
     def split_qr(self, split_text: str, ifiles: int) -> int:
         """Creates new files based on barcode contents.
         Args:
-            split_text: Barcode content to recognize a separator pag
+            split_text: Barcode content to recognize a separator page
         Returns:
             int: Number of generated files.
         """
