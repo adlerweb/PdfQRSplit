@@ -11,6 +11,10 @@ Python 3 or newer is required. You also need **zxing** (Barcode recognition), **
 ```
 pip install zxing pypdf4 pillow
 ```
+or
+```
+pip install -r requirements.txt
+```
 
 ## Usage
 ```
