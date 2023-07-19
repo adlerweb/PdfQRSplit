@@ -73,24 +73,16 @@ class PdfQrSplit:
                     if xObject[obj]['/Subtype'] == '/Image':
                         data = xObject[obj].getData()
 
-                        if xObject[obj]['/Filter'] == '/FlateDecode':
-                            tgtn = temp_dir + "/" + obj[1:] + ".png"
-                            img = Image.open(io.BytesIO(data))
-                            fn = lambda x : 255 if x > 128 else 0
-                            img = img.convert('L').point(fn, mode='1')
-                            img.save(tgtn)
-                        elif xObject[obj]['/Filter'] == '/DCTDecode':
-                            tgtn = temp_dir + "/" + obj[1:] + ".png"
-                            img = Image.open(io.BytesIO(data))
-                            fn = lambda x : 255 if x > 128 else 0
-                            img = img.convert('L').point(fn, mode='1')
-                            img.save(tgtn)
-                        elif xObject[obj]['/Filter'] == '/JPXDecode':
-                            tgtn = temp_dir + "/" + obj[1:] + ".png"
-                            img = Image.open(io.BytesIO(data))
-                            fn = lambda x : 255 if x > 128 else 0
-                            img = img.convert('L').point(fn, mode='1')
-                            img.save(tgtn)
+                        if '/FlateDecode' in xObject[obj]['/Filter']  or \
+                            '/DCTDecode' in xObject[obj]['/Filter'] or \
+                            '/JPXDecode' in xObject[obj]['/Filter']:
+                                tgtn = temp_dir + "/" + obj[1:] + ".png"
+                                img = Image.open(io.BytesIO(data))
+                                fn = lambda x : 255 if x > 128 else 0
+                                img = img.convert('L').point(fn, mode='1')
+                                img.save(tgtn)
+                        elif self.debug:
+                            print(f"      Unknown filter type {xObject[obj]['/Filter']}")
                         
                         if tgtn:
                             if self.debug:
