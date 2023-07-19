@@ -28,10 +28,11 @@ parser.add_argument('-d', '--debug', action='store_true',
                     help='Show debug messages')
 
 class PdfQrSplit:
-    def __init__(self, filepath: str, verbose: bool, debug: bool) -> None:
+    def __init__(self, filepath: str, verbose: bool, debug: bool, brightness: 128) -> None:
         self.filepath = filepath
         self.verbose = verbose
         self.debug = debug
+        self.brightness = brightness
         self.input_pdf = PyPDF4.PdfFileReader(filepath, "rb")
         self.total_pages = self.input_pdf.getNumPages()
         if verbose:
@@ -78,7 +79,7 @@ class PdfQrSplit:
                             '/JPXDecode' in xObject[obj]['/Filter']:
                                 tgtn = temp_dir + "/" + obj[1:] + ".png"
                                 img = Image.open(io.BytesIO(data))
-                                fn = lambda x : 255 if x > 128 else 0
+                                fn = lambda x : 255 if x > self.brightness else 0
                                 img = img.convert('L').point(fn, mode='1')
                                 img.save(tgtn)
                         elif self.debug:
@@ -142,7 +143,7 @@ ofiles = 0
 ifiles = 0
 
 for filepath in filepaths:
-    splitter = PdfQrSplit(filepath, args.verbose, args.debug)
+    splitter = PdfQrSplit(filepath, args.verbose, args.debug, brightness=args.brightness)
     ofiles += splitter.split_qr(args.separator, ifiles)
     ifiles += 1
 
